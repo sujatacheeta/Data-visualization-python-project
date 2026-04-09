@@ -127,9 +127,6 @@ sns.barplot(
     palette=colors,
     ax=ax1
 )
-#for i, bar in enumerate(ax1.patches):
-#    bar.set_edgecolor('black')
-#    bar.set_linewidth(0.5)
 
 ax1.set_xlabel("Subjects")
 ax1.set_ylabel("Marks")
@@ -144,7 +141,6 @@ fig2, ax2 = plt.subplots(figsize=(5,3))
 sns.lineplot(x=list(subjects), y=list(student_marks), marker='o',ax=ax2)
 ax2.set_xlabel("Subjects")
 ax2.set_ylabel("Marks")
-#ax2.set_ylim(0, 100)
 plt.tight_layout()
 st.pyplot(fig2, use_container_width=False)
 
@@ -309,20 +305,9 @@ col1, col2 = st.columns(2)
 male_df = class_df[class_df['gender'] == 'Boy']
 female_df = class_df[class_df['gender'] == 'Girl']
 
-#with col1:
-#    if not male_df.empty:
 male_topper = male_df.loc[male_df['average'].idxmax()]
-#        st.success(f"👦 Male Topper: {male_topper['name']} ({male_topper['average']}%)")
-#    else:
-#        st.warning("No male students in this selection")
 
-#with col2:
-#    if not female_df.empty:
 female_topper = female_df.loc[female_df['average'].idxmax()]
-#        st.success(f"👧 Female Topper: {female_topper['name']} ({female_topper['average']}%)")
-#    else:
-#        st.warning("No female students in this selection")
-
 
 col1.markdown(f"""
 <div style="
@@ -421,9 +406,6 @@ colB.metric("👧 Girls Avg", round(float(girl_avg.values[0]), 2) if not girl_av
 st.subheader("👦👧 Average Performance by Gender")
 
 fig5, ax5 = plt.subplots(figsize=(5,3))
-
-#avg_marks = class_df.groupby('gender')['average'].mean()
-#avg_marks = avg_marks.reindex(['Boy', 'Girl']).reset_index()
 
 sns.barplot(x='gender', y='average', data=avg_marks, ax=ax5, palette="deep")
 
